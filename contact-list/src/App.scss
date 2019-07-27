@@ -1,0 +1,13 @@
+@import './custom_variables.scss';
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700&display=swap');
+
+body {
+  background: $light-gray;
+  color: $default-dark;
+  font-family: 'Lato', sans-serif;
+}
+
+.App {
+  // max-width: 800px;
+  margin: 0 auto;
+}

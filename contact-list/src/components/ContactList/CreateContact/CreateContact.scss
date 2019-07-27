@@ -1,0 +1,45 @@
+@import '../../../custom_variables.scss';
+.CreateContact {
+  display: flex;
+  background: $white;
+  text-align: right;
+  justify-content: center;
+  input {
+    font-size: 1rem;
+    padding: 15px 5px;
+    border: none;
+    border-bottom: 1px solid $gray;
+    margin: 10px;
+    transition: all 0.2s ease-in-out;
+    &:focus {
+      outline: none;
+      border-bottom: 1px solid $red;
+    }
+    &[type='submit'] {
+      float: left;
+    }
+  }
+  &__name {
+    display: inline-block;
+  }
+  &__extra {
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+    input {
+      padding: 8px 3px;
+    }
+    &.visible {
+      opacity: 1;
+      max-height: 300px;
+    }
+    &.hidden {
+      opacity: 0;
+      max-height: 30px;
+    }
+  }
+  &__error {
+  }
+  .dropdown-toggle {
+    float: right;
+  }
+}
