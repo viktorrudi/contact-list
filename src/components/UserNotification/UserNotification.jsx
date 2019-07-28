@@ -1,23 +1,21 @@
-import React, { useEffect, useContext } from 'react'
-import { ContactContext } from '../ContactContext'
-import { FaTimes } from 'react-icons/fa'
-import './UserNotification.scss'
+import React, { useEffect, useContext } from 'react';
+import { FaTimes } from 'react-icons/fa';
+import { ContactContext } from '../ContactContext.jsx';
+import './UserNotification.scss';
 
 export default function UserNotification() {
-  const { notification, showNotification, setShowNotification } = useContext(
-    ContactContext
-  )
+  const { notification, showNotification, setShowNotification } = useContext(ContactContext);
 
   useEffect(() => {
     // Hiding notification on timeout
     if (showNotification) {
       setTimeout(() => {
-        setShowNotification(false)
-      }, 2000)
+        setShowNotification(false);
+      }, 2000);
     }
-  }, [setShowNotification, showNotification])
+  }, [setShowNotification, showNotification]);
 
-  const userNotification = 'UserNotification'
+  const userNotification = 'UserNotification';
   return (
     <div
       className={`
@@ -33,9 +31,9 @@ export default function UserNotification() {
       ) : null}
       {notification.message}
 
-      <button className="btn close" onClick={() => setShowNotification(false)}>
+      <button type="button" className="btn close" onClick={() => setShowNotification(false)}>
         <FaTimes />
       </button>
     </div>
-  )
+  );
 }
