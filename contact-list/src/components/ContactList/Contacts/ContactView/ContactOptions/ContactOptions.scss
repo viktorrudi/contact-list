@@ -1,0 +1,46 @@
+@import '../../../../../styles/custom_variables.scss';
+
+.ContactOptions {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  margin: 50px;
+  .btn {
+    margin: 10px 5px 0 0;
+  }
+  h3 {
+    margin: 0;
+  }
+  // All inputs (not buttons)
+  input {
+    border: none;
+    background: none;
+    border-bottom: 1px solid $light-gray;
+    transition: $transition-default;
+    margin: 10px 5px 0 0;
+    font-size: 1.1rem;
+    width: 100%;
+    &:focus {
+      border-bottom: 1px solid $gray;
+      outline: none;
+    }
+  }
+  &__group--name {
+    margin-bottom: 50px;
+    // All inputs
+    [data-firstname],
+    [data-surname] {
+      margin: 0;
+      font-size: 2rem;
+      padding: 2px 0;
+      margin-bottom: 10px;
+      width: 80%;
+      @media (max-width: $breakpoint-mobile) {
+        font-size: 1.5rem;
+      }
+    }
+  }
+  &__group--location {
+    margin: 50px 0 20px;
+  }
+}

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import { ContactContext } from '../../ContactContext'
 import { emptyInputKeys } from '../../../utils'
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa'
@@ -7,37 +7,25 @@ import './CreateContact.scss'
 export default function CreateContact() {
   const [newContactInfo, setNewContactInfo] = useState(emptyInputKeys)
   const [showAllNewInfo, setShowAllNewInfo] = useState(false)
-  const [error, setError] = useState({})
-  const { addContact } = useContext(ContactContext)
+  const { addContact, setNotification } = useContext(ContactContext)
 
   const handleSubmit = e => {
     e.preventDefault()
-
     const { success, message } = addContact(newContactInfo)
     // If validation fails
     if (!success) {
-      setError({ message })
+      setNotification('error', message)
     } else {
-      setError({})
+      setNotification('success', message)
       setNewContactInfo(emptyInputKeys)
     }
   }
 
-  useEffect(() => {
-    if (newContactInfo.firstName && newContactInfo.surname) {
-      setError({})
-    }
-  }, [newContactInfo])
-
   const createContact = 'CreateContact'
   return (
     <div className={createContact}>
-      <div className={`${createContact}__error`}>
-        {error.message ? error.message : null}
-      </div>
-
       <form onSubmit={handleSubmit}>
-        <div className={`${createContact}__name`}>
+        <div className={`${createContact}__main`}>
           <input
             value={newContactInfo.firstName}
             placeholder="first name"
@@ -57,14 +45,17 @@ export default function CreateContact() {
             }
             type="text"
           />
+          <span
+            className="dropdown-toggle"
+            onClick={() => setShowAllNewInfo(!showAllNewInfo)}
+          >
+            {showAllNewInfo ? <FaChevronUp /> : <FaChevronDown />}
+          </span>
+
+          <button onClick={handleSubmit} type="submit">
+            Save new contact
+          </button>
         </div>
-        <input onClick={handleSubmit} type="submit" value="Save" />
-        <span
-          className="dropdown-toggle"
-          onClick={() => setShowAllNewInfo(!showAllNewInfo)}
-        >
-          {showAllNewInfo ? <FaChevronUp /> : <FaChevronDown />}
-        </span>
 
         {/* Hidden add contact details */}
         <div
@@ -72,6 +63,7 @@ export default function CreateContact() {
             showAllNewInfo ? 'visible' : 'hidden'
           }`}
         >
+          <h3>Additional contact information</h3>
           <div className={`${createContact}__extra--general`}>
             <input
               value={newContactInfo.email}

@@ -1,0 +1,21 @@
+@import './mixins.scss';
+
+// Colors
+$red: #fc4513;
+$green: #66ce7d;
+$light-gray: #f6f7fc;
+$gray: #94a6b3;
+$default-dark: #54636f;
+$white: #fff;
+$black: #000;
+$blue: #7292ff;
+
+// Breakpoint
+$breakpoint-mobile: 800px;
+
+// Box shadows
+$shadow-default: 0 0 10px 10px $light-gray;
+$shadow-default-hover: 0 0 10px 10px darken($light-gray, 5%);
+
+// Transitions
+$transition-default: all 0.15s ease-in-out;

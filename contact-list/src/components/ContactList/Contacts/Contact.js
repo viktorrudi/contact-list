@@ -2,17 +2,17 @@ import React from 'react'
 
 export default function Contact({ contact, setOpenContact }) {
   const { id, firstName, surname, email } = contact
-  const contactList = 'ContactList'
+  const contactStyle = 'Contact'
   return (
     <div
       key={id}
-      className={`${contactList}__contact`}
+      className={`${contactStyle}`}
       onClick={() => setOpenContact(id)}
     >
-      <span className={`${contactList}__contact--name`}>
+      <span className={`${contactStyle}__name`}>
         {`${firstName} ${surname}`}
       </span>
-      <span className={`${contactList}__contact--email`}>{`${email}`}</span>
+      <span className={`${contactStyle}__email`}>{`${email}`}</span>
     </div>
   )
 }

@@ -1,16 +1,5 @@
 [
   {
-    "city": "Ashleighton",
-    "surname": "McCullough",
-    "zip": "39452",
-    "firstName": "Graciela",
-    "region": "North Carolina",
-    "email": "Sadie@claud.biz",
-    "phone": "190-073-9301 x115",
-    "street": "5016 Nienow Spurs",
-    "id": 0
-  },
-  {
     "city": "South Terrance",
     "surname": "Heidenreich",
     "zip": "01903",
@@ -108,5 +97,16 @@
     "phone": "1-762-284-8440 x6835",
     "street": "052 Rylan Isle",
     "id": 9
+  },
+  {
+    "city": "Ashleighton",
+    "surname": "McCullough",
+    "zip": "39452",
+    "firstName": "Graciela",
+    "region": "North Carolina",
+    "email": "Sadie@claud.biz",
+    "phone": "190-073-9301 x115",
+    "street": "5016 Nienow Spurs",
+    "id": 0
   }
 ]

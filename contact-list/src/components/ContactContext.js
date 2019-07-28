@@ -9,12 +9,20 @@ class ContactProvider extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      // Properties
       contacts: contactsDB,
       openContact: {},
+      notification: '',
+      showNotification: false,
+
+      // Methods
+      setNotification: this.setNotification,
       setOpenContact: this.setOpenContact,
       addContact: this.addContact,
       deleteContact: this.deleteContact,
+      closeContactView: this.closeContactView,
       updateContact: this.updateContact,
+      setShowNotification: this.setShowNotification,
     }
   }
 
@@ -23,21 +31,27 @@ class ContactProvider extends Component {
       const updatedContacts = prevState.contacts.filter(
         contact => contact.id !== contactID
       )
-      prevState.contacts = updatedContacts
-      prevState.openContact = {}
-      return prevState
+      return (prevState.contacts = updatedContacts)
     })
+    this.closeContactView()
+    return { success: true, message: 'Contact deleted' }
   }
 
   updateContact = (contactID, updatedContact) => {
-    this.setState(prevState => {
-      return prevState.contacts.map(contact => {
-        if (contact.id === contactID) {
-          Object.assign(contact, updatedContact)
-        }
-        return true
+    const check = formValidation(updatedContact)
+    if (check.success) {
+      this.setState(prevState => {
+        return prevState.contacts.map(contact => {
+          if (contact.id === contactID) {
+            Object.assign(contact, updatedContact)
+          }
+          return true
+        })
       })
-    })
+      return { success: true, message: 'Contact updated' }
+    } else {
+      return { success: false, message: check.message }
+    }
   }
 
   setOpenContact = contactID => {
@@ -54,10 +68,21 @@ class ContactProvider extends Component {
     const check = formValidation(contact)
     if (check.success) {
       this.setState({ contacts: [...this.state.contacts, check.input] })
-      return check
-    } else {
-      return check
+      return { success: true, message: 'Contact created' }
     }
+    return { success: false, message: check.message }
+  }
+
+  closeContactView = () => {
+    this.setState({ openContact: {} })
+  }
+
+  setShowNotification = status => {
+    this.setState({ showNotification: status })
+  }
+
+  setNotification = (type, message) => {
+    this.setState({ showNotification: true, notification: { type, message } })
   }
 
   render() {

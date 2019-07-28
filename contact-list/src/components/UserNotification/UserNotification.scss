@@ -1,0 +1,39 @@
+@import '../../styles/custom_variables.scss';
+
+.UserNotification {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 15px;
+  z-index: 10;
+  font-weight: bold;
+  color: $white;
+  transition: $transition-default;
+  &.error {
+    background: $red;
+  }
+  &.info {
+    background: $blue;
+  }
+  &.success {
+    background: $green;
+  }
+  button.close {
+    cursor: pointer;
+    color: $white;
+    font-size: 1rem;
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+  }
+  &.visible {
+    opacity: 1;
+    bottom: 0;
+  }
+  &.hidden {
+    opacity: 0;
+    bottom: -100px;
+  }
+}

@@ -1,0 +1,35 @@
+@import '../../../styles/custom_variables.scss';
+
+.Contacts {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 80px auto 0 auto;
+  position: relative;
+  @media (max-width: $breakpoint-mobile) {
+    margin: 0;
+  }
+  &__wrapper {
+    width: 50%;
+    z-index: 2;
+    height: 100vh;
+    background: $white;
+    .Contact {
+      background: $white;
+      // width: 100%;
+      padding: 20px;
+      cursor: pointer;
+      &:hover {
+        transition: $transition-default;
+        background: $light-gray;
+      }
+      &__email {
+        color: $gray;
+        float: right;
+      }
+    }
+    @media (max-width: $breakpoint-mobile) {
+      width: 100%;
+      z-index: 3;
+    }
+  }
+}
