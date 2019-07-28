@@ -1,5 +1,4 @@
 import React, { Component, createContext } from 'react'
-import PropTypes from 'prop-types'
 import contactsDB from '../database/contacts.json'
 import { formValidation } from '../utils'
 

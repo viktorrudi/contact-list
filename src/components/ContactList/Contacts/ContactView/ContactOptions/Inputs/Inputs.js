@@ -11,6 +11,7 @@ export default function ContactOptions({ updatedContact, setUpdatedContact }) {
   const contactOptions = 'ContactOptions'
   return (
     <>
+      {/* FIXME: How to solve this? */}
       {/* {Object.keys(openContact).map(key => (
           <input
             key={key.toString()}
