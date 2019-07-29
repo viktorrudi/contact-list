@@ -4,6 +4,9 @@ import { ContactContext } from '../../../../../ContactContext';
 
 export default function ContactOptions({ updatedContact, setUpdatedContact }) {
   const { openContact } = useContext(ContactContext);
+  const {
+    firstName, surname, email, phone, street, city, zip, region,
+  } = updatedContact;
 
   useEffect(() => {
     setUpdatedContact(openContact);
@@ -28,11 +31,13 @@ export default function ContactOptions({ updatedContact, setUpdatedContact }) {
         ))} */}
 
       <div className={`${contactOptions}__group--name`}>
+        {/* <label htmlFor={}>First name</label> */}
         <input
+          id="0"
           data-firstname
           placeholder="first name"
           type="text"
-          value={updatedContact.firstName || ''}
+          value={firstName || ''}
           onChange={e => setUpdatedContact({
             ...updatedContact,
             firstName: e.target.value,
@@ -43,7 +48,7 @@ export default function ContactOptions({ updatedContact, setUpdatedContact }) {
           data-surname
           placeholder="surname"
           type="text"
-          value={updatedContact.surname || ''}
+          value={surname || ''}
           onChange={e => setUpdatedContact({ ...updatedContact, surname: e.target.value })}
         />
       </div>
@@ -54,14 +59,14 @@ export default function ContactOptions({ updatedContact, setUpdatedContact }) {
           data-email
           placeholder="email"
           type="email"
-          value={updatedContact.email || ''}
+          value={email || ''}
           onChange={e => setUpdatedContact({ ...updatedContact, email: e.target.value })}
         />
         <input
           data-phone
           placeholder="phone"
           type="tel"
-          value={updatedContact.phone || ''}
+          value={phone || ''}
           onChange={e => setUpdatedContact({ ...updatedContact, phone: e.target.value })}
         />
       </div>
@@ -72,28 +77,28 @@ export default function ContactOptions({ updatedContact, setUpdatedContact }) {
           data-city
           placeholder="city"
           type="text"
-          value={updatedContact.city || ''}
+          value={city || ''}
           onChange={e => setUpdatedContact({ ...updatedContact, city: e.target.value })}
         />
         <input
           data-zip
           placeholder="zip"
           type="text"
-          value={updatedContact.zip || ''}
+          value={zip || ''}
           onChange={e => setUpdatedContact({ ...updatedContact, zip: e.target.value })}
         />
         <input
           data-street
           placeholder="street"
           type="text"
-          value={updatedContact.street || ''}
+          value={street || ''}
           onChange={e => setUpdatedContact({ ...updatedContact, street: e.target.value })}
         />
         <input
           data-region
           placeholder="region"
           type="text"
-          value={updatedContact.region || ''}
+          value={region || ''}
           onChange={e => setUpdatedContact({ ...updatedContact, region: e.target.value })}
         />
       </div>

@@ -46,7 +46,7 @@ export default function CreateContact() {
             onChange={e => setNewContactInfo({ ...newContactInfo, surname: e.target.value })}
             type="text"
           />
-          <div
+          <span
             tabIndex={0}
             role="button"
             className="dropdown-toggle"
@@ -54,10 +54,13 @@ export default function CreateContact() {
             onKeyPress={handleShowInfo}
           >
             {showAllNewInfo ? <FaChevronUp /> : <FaChevronDown />}
-          </div>
+            {' '}
+            {window.innerWidth <= 800 ? 'Additional details' : null}
+          </span>
 
           <button onClick={handleSubmit} type="submit">
             Save new contact
+            {' '}
           </button>
         </div>
 

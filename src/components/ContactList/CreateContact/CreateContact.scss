@@ -9,10 +9,13 @@
   justify-content: center;
   box-shadow: $shadow-default;
   z-index: 5;
-  padding: 0 20px;
-  @media (max-width: $breakpoint-mobile) {
+  padding: 0px 20px;
+  border-bottom: 1px solid $light-gray;
+  @media (max-width: $breakpoint-tablet) {
+    box-shadow: $shadow-default-hover;
     position: relative;
-    padding: 10px 20px;
+    padding: 10px 10px;
+    margin: 0;
   }
   input {
     font-size: 1.1rem;
@@ -25,13 +28,19 @@
       outline: none;
       border-bottom: 1px solid $gray;
     }
+    @media (max-width: $breakpoint-tablet) {
+      float: none;
+      width: 100%;
+    }
   }
   &__main {
     position: relative;
     display: flex;
     margin: 10px 0;
-    @media (max-width: $breakpoint-mobile) {
-      display: inline;
+    @media (max-width: $breakpoint-tablet) {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0;
     }
     button[type='submit'] {
       position: relative;
@@ -46,8 +55,9 @@
       padding: 15px;
       box-shadow: $shadow-default;
       transition: $transition-default;
-      @media (max-width: $breakpoint-mobile) {
-        top: 6px;
+      @media (max-width: $breakpoint-tablet) {
+        float: none;
+        width: 100%;
       }
       &:hover {
         transform: scale(1.01);
@@ -56,10 +66,16 @@
     }
     .dropdown-toggle {
       cursor: pointer;
-      @media (min-width: $breakpoint-mobile) {
+      svg {
+        @include vertical-center-relative;
+      }
+      @media (max-width: $breakpoint-tablet) {
+        margin: 5px auto;
+        padding: 10px;
+        order: 1;
         svg {
           @include vertical-center-relative;
-          left: 10px;
+          left: 0px;
         }
       }
     }
@@ -67,16 +83,20 @@
   &__extra {
     overflow: hidden;
     transition: $transition-default;
-    padding: 20px 0;
+    padding: 10px 0;
     h3 {
       margin-top: 0;
     }
     input {
-      padding: 8px 3px;
+      // padding: 8px 3px;
+      @media (max-width: $breakpoint-tablet) {
+        float: none;
+        width: 100%;
+      }
     }
     &.visible {
       opacity: 1;
-      max-height: 300px;
+      max-height: 500px;
     }
     &.hidden {
       padding: 0;

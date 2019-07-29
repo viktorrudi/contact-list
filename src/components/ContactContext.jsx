@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/no-unused-state */
 import React, { Component, createContext } from 'react';
 import contactsDB from '../database/contacts.json';
@@ -85,7 +86,7 @@ class ContactProvider extends Component {
   };
 
   render() {
-    const { children } = this.state;
+    const { children } = this.props;
     return <ContactContext.Provider value={this.state}>{children}</ContactContext.Provider>;
   }
 }

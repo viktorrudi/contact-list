@@ -5,13 +5,13 @@
   flex-wrap: wrap;
   margin: 80px auto 0 auto;
   position: relative;
-  @media (max-width: $breakpoint-mobile) {
+  @media (max-width: $breakpoint-tablet) {
     margin: 0;
   }
   &__wrapper {
-    width: 50%;
+    width: 100%;
     z-index: 2;
-    height: 100vh;
+    // height: 100vh;
     background: $white;
     .Contact {
       background: $white;
@@ -27,7 +27,7 @@
         float: right;
       }
     }
-    @media (max-width: $breakpoint-mobile) {
+    @media (max-width: $breakpoint-tablet) {
       width: 100%;
       z-index: 3;
     }
