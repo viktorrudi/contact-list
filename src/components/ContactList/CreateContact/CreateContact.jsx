@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { ContactContext } from '../../ContactContext';
 import { emptyInputKeys } from '../../../utils';
+import inputModel from '../../../utils/input_model';
 import './CreateContact.scss';
 
 export default function CreateContact() {
@@ -30,22 +31,19 @@ export default function CreateContact() {
     <div className={createContact}>
       <form onSubmit={handleSubmit}>
         <div className={`${createContact}__main`}>
-          <input
-            value={newContactInfo.firstName}
-            placeholder="first name"
-            onChange={e => setNewContactInfo({
-              ...newContactInfo,
-              firstName: e.target.value,
-            })
-            }
-            type="text"
-          />
-          <input
-            value={newContactInfo.surname}
-            placeholder="surname"
-            onChange={e => setNewContactInfo({ ...newContactInfo, surname: e.target.value })}
-            type="text"
-          />
+          {inputModel.map(({
+            key, text, type, group,
+          }) => (group === 'name' ? (
+            <input
+              id={key}
+              key={key}
+              placeholder={text}
+              type={type}
+              value={newContactInfo[key] || ''}
+              onChange={e => setNewContactInfo({ ...newContactInfo, [key]: e.target.value })}
+            />
+          ) : null))}
+
           <span
             tabIndex={0}
             role="button"
@@ -68,45 +66,33 @@ export default function CreateContact() {
         <div className={`${createContact}__extra ${showAllNewInfo ? 'visible' : 'hidden'}`}>
           <h3>Additional contact information</h3>
           <div className={`${createContact}__extra--general`}>
-            <input
-              value={newContactInfo.email}
-              placeholder="email"
-              type="email"
-              onChange={e => setNewContactInfo({ ...newContactInfo, email: e.target.value })}
-            />
-            <input
-              value={newContactInfo.phone}
-              placeholder="phone"
-              type="tel"
-              onChange={e => setNewContactInfo({ ...newContactInfo, phone: e.target.value })}
-            />
+            {inputModel.map(({
+              key, text, type, group,
+            }) => (group === 'contact' ? (
+              <input
+                id={key}
+                key={key}
+                placeholder={text}
+                type={type}
+                value={newContactInfo[key] || ''}
+                onChange={e => setNewContactInfo({ ...newContactInfo, [key]: e.target.value })}
+              />
+            ) : null))}
           </div>
 
           <div className={`${createContact}__extra--address`}>
-            <input
-              value={newContactInfo.city}
-              placeholder="city"
-              type="text"
-              onChange={e => setNewContactInfo({ ...newContactInfo, city: e.target.value })}
-            />
-            <input
-              value={newContactInfo.zip}
-              placeholder="zip"
-              type="text"
-              onChange={e => setNewContactInfo({ ...newContactInfo, zip: e.target.value })}
-            />
-            <input
-              value={newContactInfo.street}
-              placeholder="street"
-              type="text"
-              onChange={e => setNewContactInfo({ ...newContactInfo, street: e.target.value })}
-            />
-            <input
-              value={newContactInfo.region}
-              placeholder="region"
-              type="text"
-              onChange={e => setNewContactInfo({ ...newContactInfo, region: e.target.value })}
-            />
+            {inputModel.map(({
+              key, text, type, group,
+            }) => (group === 'location' ? (
+              <input
+                id={key}
+                key={key}
+                placeholder={text}
+                type={type}
+                value={newContactInfo[key] || ''}
+                onChange={e => setNewContactInfo({ ...newContactInfo, [key]: e.target.value })}
+              />
+            ) : null))}
           </div>
         </div>
       </form>

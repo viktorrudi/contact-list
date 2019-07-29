@@ -48,16 +48,4 @@ h3 {
       box-shadow: $shadow-default;
     }
   }
-  &.close {
-    position: absolute;
-    margin: 0;
-    padding: 0;
-    top: -5px;
-    right: 0;
-    background: none;
-    font-size: 2rem;
-  }
-  // &:focus {
-  //   outline: none;
-  // }
 }

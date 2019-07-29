@@ -1,0 +1,57 @@
+export default [
+  {
+    text: 'First name',
+    key: 'firstName',
+    group: 'name',
+    type: 'text',
+    label: false,
+  },
+  {
+    text: 'Surname',
+    key: 'surname',
+    group: 'name',
+    type: 'text',
+    label: false,
+  },
+  {
+    text: 'Email',
+    key: 'email',
+    group: 'contact',
+    type: 'email',
+    label: true,
+  },
+  {
+    text: 'Phone',
+    key: 'phone',
+    group: 'contact',
+    type: 'tel',
+    label: true,
+  },
+  {
+    text: 'Street',
+    key: 'street',
+    type: 'text',
+    label: true,
+  },
+  {
+    text: 'City',
+    key: 'city',
+    group: 'location',
+    type: 'text',
+    label: true,
+  },
+  {
+    text: 'Zip',
+    key: 'zip',
+    group: 'location',
+    type: 'text',
+    label: true,
+  },
+  {
+    text: 'Region',
+    key: 'region',
+    group: 'location',
+    type: 'text',
+    label: true,
+  },
+];

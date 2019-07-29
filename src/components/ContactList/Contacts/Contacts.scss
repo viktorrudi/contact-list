@@ -3,8 +3,9 @@
 .Contacts {
   display: flex;
   flex-wrap: wrap;
-  margin: 80px auto 0 auto;
+  margin: 70px auto 0 auto;
   position: relative;
+  height: 100vh;
   @media (max-width: $breakpoint-tablet) {
     margin: 0;
   }
@@ -15,7 +16,6 @@
     background: $white;
     .Contact {
       background: $white;
-      // width: 100%;
       padding: 20px;
       cursor: pointer;
       &:hover {
@@ -27,9 +27,12 @@
         float: right;
       }
     }
-    @media (max-width: $breakpoint-tablet) {
-      width: 100%;
-      z-index: 3;
+  }
+  &__no-contacts {
+    font-size: 2rem;
+    margin: 20px auto;
+    span {
+      margin-left: 5px;
     }
   }
 }

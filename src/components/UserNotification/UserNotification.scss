@@ -10,6 +10,7 @@
   font-weight: bold;
   color: $white;
   transition: $transition-default;
+
   &.error {
     background: $red;
   }
@@ -19,15 +20,7 @@
   &.success {
     background: $green;
   }
-  button.close {
-    cursor: pointer;
-    color: $white;
-    font-size: 1rem;
-    position: absolute;
-    top: 50%;
-    right: 15px;
-    transform: translateY(-50%);
-  }
+
   &.visible {
     opacity: 1;
     bottom: 0;
@@ -35,5 +28,15 @@
   &.hidden {
     opacity: 0;
     bottom: -100px;
+  }
+
+  .close {
+    background: none;
+    color: $white;
+    font-size: 1rem;
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
   }
 }

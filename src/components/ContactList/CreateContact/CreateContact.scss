@@ -19,10 +19,9 @@
   }
   input {
     font-size: 1.1rem;
-    padding: 15px 5px;
     border: none;
     border-bottom: 1px solid $white;
-    margin: 5px;
+    margin: 5px 5px 5px 0;
     transition: $transition-default;
     &:focus {
       outline: none;
@@ -31,6 +30,7 @@
     @media (max-width: $breakpoint-tablet) {
       float: none;
       width: 100%;
+      padding: 15px 5px;
     }
   }
   &__main {
@@ -70,9 +70,12 @@
         @include vertical-center-relative;
       }
       @media (max-width: $breakpoint-tablet) {
-        margin: 5px auto;
+        display: block;
+        margin: 5px 0;
         padding: 10px;
         order: 1;
+        width: 100%;
+        text-align: center;
         svg {
           @include vertical-center-relative;
           left: 0px;
@@ -88,10 +91,11 @@
       margin-top: 0;
     }
     input {
-      // padding: 8px 3px;
+      margin: 10px 0;
       @media (max-width: $breakpoint-tablet) {
         float: none;
         width: 100%;
+        margin: 0;
       }
     }
     &.visible {

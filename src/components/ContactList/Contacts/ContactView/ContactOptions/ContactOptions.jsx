@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { FaTimes } from 'react-icons/fa';
 import { ContactContext } from '../../../../ContactContext';
-import Inputs from './Inputs/Inputs';
+import UpdateInputs from './UpdateInputs/UpdateInputs';
 import './ContactOptions.scss';
 
 export default function ContactOptions() {
@@ -49,7 +49,7 @@ export default function ContactOptions() {
         <FaTimes />
       </div>
 
-      <Inputs updatedContact={updatedContact} setUpdatedContact={setUpdatedContact} />
+      <UpdateInputs updatedContact={updatedContact} setUpdatedContact={setUpdatedContact} />
 
       <button className="btn green" type="submit">
         Update contact

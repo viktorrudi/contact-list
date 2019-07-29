@@ -11,36 +11,49 @@
   h3 {
     margin: 0;
   }
-  // All inputs (not buttons)
+
   input {
     border: none;
     background: none;
-    border-bottom: 1px solid $light-gray;
     transition: $transition-default;
     margin: 10px 5px 0 0;
     font-size: 1.1rem;
     width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0);
     &:focus {
       border-bottom: 1px solid $gray;
       outline: none;
     }
   }
-  &__group--name {
+  &__inputs {
     margin-bottom: 50px;
-    // All inputs
-    [data-firstname],
-    [data-surname] {
+    label:not(#firstName):not(#surname) {
+      cursor: pointer;
+      display: block;
+      margin-top: 10px;
+      background: darken($light-gray, 2%);
+      border-radius: 5px;
+      padding: 8px;
+    }
+    #firstName,
+    #surname {
       margin: 0;
       font-size: 2rem;
       padding: 2px 0;
       margin-bottom: 10px;
-      width: 80%;
       @media (max-width: $breakpoint-tablet) {
         font-size: 1.5rem;
       }
     }
   }
-  &__group--location {
-    margin: 50px 0 20px;
+  .close {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    top: -5px;
+    right: 0;
+    background: none;
+    font-size: 2rem;
+    transform: translateY(-70%);
   }
 }
