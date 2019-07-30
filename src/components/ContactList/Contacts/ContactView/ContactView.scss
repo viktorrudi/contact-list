@@ -1,9 +1,8 @@
-@import '../../../../styles/custom_variables.scss';
+@import "../../../../styles/custom_variables.scss";
 
 .ContactView {
   position: fixed;
   width: 50%;
-  overflow: hidden;
   transition: all 0.3s ease-in-out;
   height: 100%;
   background: $light-gray;
