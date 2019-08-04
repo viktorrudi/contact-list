@@ -1,13 +1,13 @@
-import React, { useContext } from 'react';
-import { ContactContext } from '../../ContactContext';
+/* eslint-disable react/prop-types */
+import React from 'react';
 import Contact from './Contact';
 import './Contacts.scss';
-import ContactView from './ContactView/ContactView';
+// import ContactView from './ContactView/ContactView';
 
-export default function ContactList() {
-  const { contacts, setOpenContact } = useContext(ContactContext);
-
+export default function ContactList({ contacts, openContact, setOpenContact }) {
   const contactsStyle = 'Contacts';
+  console.log('contacts.jsx', openContact);
+  console.log('contacts.jsx', setOpenContact);
   return (
     <div className={contactsStyle}>
       {!contacts.length ? (
@@ -23,10 +23,11 @@ export default function ContactList() {
         {contacts
           .sort((a, b) => a.firstName.localeCompare(b.firstName))
           .map(contact => (
-            <Contact key={contact.id} contact={contact} setOpenContact={setOpenContact} />
+            <Contact key={contact.id} contact={contact} />
+            // <Contact key={contact.id} contact={contact} setOpenContact={setOpenContact} />
           ))}
       </div>
-      <ContactView />
+      {/* <ContactView /> */}
     </div>
   );
 }

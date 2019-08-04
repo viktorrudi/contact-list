@@ -30,6 +30,7 @@ export default [
   {
     text: 'Street',
     key: 'street',
+    group: 'location',
     type: 'text',
     label: true,
   },

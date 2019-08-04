@@ -92,3 +92,12 @@ class ContactProvider extends Component {
 }
 
 export default ContactProvider;
+
+// Add contacts
+// Required
+// Extra
+// View contacts
+// List
+// View single contact
+// Name
+// Other options
