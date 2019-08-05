@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import { FETCH_CONTACTS, NEW_CONTACT } from '../constants';
+import { FETCH_CONTACTS, CREATE_CONTACT } from '../constants';
 import contactDB from '../database/contacts.json';
 
 export const fetchContacts = () => (dispatch) => {
@@ -9,18 +9,20 @@ export const fetchContacts = () => (dispatch) => {
   });
 };
 
-export const newContact = contact => (dispatch) => {
+export const createContact = contact => (dispatch) => {
+  const newContact = contact;
+  newContact.id = contactDB.length;
+  console.log('new contact:', newContact);
   dispatch({
-    type: NEW_CONTACT,
-    payload: contact,
+    type: CREATE_CONTACT,
+    payload: newContact,
   });
 };
 
-// OR THIS:
-// export function fetchContacts() {
-//   return function (dispatch) {
-//     dispatch({
-//       ...
-//     });
-//   };
-// }
+export const updateContact = contact => (dispatch) => {
+  // TODO
+};
+
+export const deleteContact = contact => (dispatch) => {
+  // TODO
+};

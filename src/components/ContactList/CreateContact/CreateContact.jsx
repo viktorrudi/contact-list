@@ -1,36 +1,32 @@
-import React, { useState, useContext } from 'react';
+/* eslint-disable react/prop-types */
+import React, { useState } from 'react';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
-import { ContactContext } from '../../ContactContext';
+import { connect } from 'react-redux';
+import { createContact } from '../../../actions/contactActions';
 import { emptyInputKeys } from '../../../utils';
 import inputModel from '../../../utils/input_model';
 import './CreateContact.scss';
 
-export default function CreateContact() {
+function CreateContact(props) {
   const [newContactInfo, setNewContactInfo] = useState(emptyInputKeys);
   const [showAllNewInfo, setShowAllNewInfo] = useState(false);
-  const { addContact, setNotification } = useContext(ContactContext);
+  // const { addContact, setNotification } = useContext(ContactContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { success, message } = addContact(newContactInfo);
-    // If validation fails
-    if (!success) {
-      setNotification('error', message);
-    } else {
-      setNotification('success', message);
-      setNewContactInfo(emptyInputKeys);
-    }
+    props.createContact(newContactInfo);
+    setNewContactInfo(emptyInputKeys);
   };
 
   const handleShowInfo = () => {
     setShowAllNewInfo(!showAllNewInfo);
   };
 
-  const createContact = 'CreateContact';
+  const style = 'CreateContact';
   return (
-    <div className={createContact}>
+    <div className={style}>
       <form onSubmit={handleSubmit}>
-        <div className={`${createContact}__main`}>
+        <div className={`${style}__main`}>
           {inputModel.map(({
             key, text, type, group,
           }) => (group === 'name' ? (
@@ -63,9 +59,9 @@ export default function CreateContact() {
         </div>
 
         {/* Hidden add contact details */}
-        <div className={`${createContact}__extra ${showAllNewInfo ? 'visible' : 'hidden'}`}>
+        <div className={`${style}__extra ${showAllNewInfo ? 'visible' : 'hidden'}`}>
           <h3>Additional contact information</h3>
-          <div className={`${createContact}__extra--general`}>
+          <div className={`${style}__extra--general`}>
             {inputModel.map(({
               key, text, type, group,
             }) => (group === 'contact' ? (
@@ -80,7 +76,7 @@ export default function CreateContact() {
             ) : null))}
           </div>
 
-          <div className={`${createContact}__extra--address`}>
+          <div className={`${style}__extra--address`}>
             {inputModel.map(({
               key, text, type, group,
             }) => (group === 'location' ? (
@@ -99,3 +95,12 @@ export default function CreateContact() {
     </div>
   );
 }
+
+// const mapActionToProps = {
+//   addContact: state.createContact
+// };
+
+export default connect(
+  null,
+  { createContact },
+)(CreateContact);

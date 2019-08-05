@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchContacts } from '../../actions/contactActions';
 import { setOpenContact } from '../../actions/displayActions';
-// import CreateContact from './CreateContact/CreateContact';
+import CreateContact from './CreateContact/CreateContact';
 import Contacts from './Contacts/Contacts';
 // import UserNotification from '../UserNotification/UserNotification';
 
@@ -19,12 +19,18 @@ class ContactList extends Component {
     this.props.setOpenContact();
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.newContact) {
+      this.props.contacts.push(nextProps.newContact);
+    }
+  }
+
   render() {
     return (
       <>
-        {/* <CreateContact /> */}
+        <CreateContact />
         <Contacts
-          contacts={this.props.library.contacts}
+          contacts={this.props.contacts}
           openContact={this.props.openContact}
           setOpenContact={this.props.setOpenContact}
         />
@@ -36,13 +42,15 @@ class ContactList extends Component {
 
 // Naming from reducers/index - combineReducers
 const mapStateToProps = state => ({
-  library: state.library,
-  openContact: state.openContact,
+  contacts: state.library.contacts,
+  newContact: state.library.newContact,
+  openContact: state.display.openContact,
 });
 
 ContactList.propTypes = {
   fetchContacts: PropTypes.func.isRequired,
   contacts: PropTypes.array.isRequired,
+  newContact: PropTypes.object,
   openContact: PropTypes.object,
 };
 

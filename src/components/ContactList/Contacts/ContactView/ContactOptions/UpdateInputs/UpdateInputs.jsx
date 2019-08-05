@@ -1,14 +1,13 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect, useContext } from 'react';
-import { ContactContext } from '../../../../../ContactContext';
+import React from 'react';
 import inputModel from '../../../../../../utils/input_model';
 
 export default function UpdateInputs({ updatedContact, setUpdatedContact }) {
-  const { openContact } = useContext(ContactContext);
+  // const { openContact } = useContext(ContactContext);
 
-  useEffect(() => {
-    setUpdatedContact(openContact);
-  }, [openContact, setUpdatedContact]);
+  // useEffect(() => {
+  //   setUpdatedContact(openContact);
+  // }, [openContact, setUpdatedContact]);
 
   const contactOptions = 'ContactOptions';
   return (

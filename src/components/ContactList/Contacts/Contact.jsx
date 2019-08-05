@@ -13,8 +13,8 @@ export default function Contact({ contact, setOpenContact }) {
       role="button"
       key={id}
       className={`${contactStyle}`}
-      onKeyPress={() => setOpenContact(id)}
-      onClick={() => setOpenContact(id)}
+      onKeyPress={() => setOpenContact(contact)}
+      onClick={() => setOpenContact(contact)}
     >
       <span className={`${contactStyle}__name`}>{`${firstName} ${surname}`}</span>
       <span className={`${contactStyle}__email`}>{`${email}`}</span>

@@ -1,17 +1,13 @@
-import React, { useState, useEffect, useContext } from 'react';
+/* eslint-disable react/prop-types */
+import React, { useState, useEffect } from 'react';
 import { FaTimes } from 'react-icons/fa';
-import { ContactContext } from '../../../../ContactContext';
+import { connect } from 'react-redux';
+import { showContactView } from '../../../../../actions/displayActions';
+import { updateContact, deleteContact } from '../../../../../actions/contactActions';
 import UpdateInputs from './UpdateInputs/UpdateInputs';
 import './ContactOptions.scss';
 
-export default function ContactOptions() {
-  const {
-    openContact,
-    updateContact,
-    deleteContact,
-    closeContactView,
-    setNotification,
-  } = useContext(ContactContext);
+function ContactOptions({ openContact }) {
   const [updatedContact, setUpdatedContact] = useState(openContact);
 
   useEffect(() => {
@@ -21,19 +17,21 @@ export default function ContactOptions() {
   const handleDelete = (e) => {
     e.preventDefault();
 
-    const { message } = deleteContact(openContact.id);
+    deleteContact(openContact.id);
+    // const { message } = deleteContact(openContact.id);
     // Will allways succeed, so not checking
-    setNotification('success', message);
+    // setNotification('success', message);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     // Attempting to update contact
-    const { success, message } = updateContact(updatedContact.id, updatedContact);
+    updateContact(updatedContact.id, updatedContact);
+    // const { success, message } = updateContact(updatedContact.id, updatedContact);
     // Validates input
-    if (!success) return setNotification('error', message);
-    return setNotification('success', message);
+    // if (!success) return setNotification('error', message);
+    // return setNotification('success', message);
   };
 
   const contactOptions = 'ContactOptions';
@@ -43,13 +41,13 @@ export default function ContactOptions() {
         tabIndex={0}
         role="button"
         className="btn close"
-        onKeyPress={() => closeContactView()}
-        onClick={() => closeContactView()}
+        onKeyPress={() => showContactView(false)}
+        onClick={() => showContactView(false)}
       >
         <FaTimes />
       </div>
 
-      <UpdateInputs updatedContact={updatedContact} setUpdatedContact={setUpdatedContact} />
+      {/* <UpdateInputs updatedContact={updatedContact} setUpdatedContact={setUpdatedContact} /> */}
 
       <button className="btn green" type="submit">
         Update contact
@@ -61,3 +59,12 @@ export default function ContactOptions() {
     </form>
   );
 }
+
+const mapStateToProps = state => ({
+  openContact: state.display.openContact,
+});
+
+export default connect(
+  mapStateToProps,
+  { showContactView, deleteContact, updateContact },
+)(ContactOptions);
